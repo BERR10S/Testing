@@ -21,6 +21,8 @@
     msgIsString = typeof msg === "string";
     var json;
 
+    console.log('iframeCookieAccessMsgHandler')
+    console.log(msg)
     if (msgIsString) {
     json = event.data.indexOf("__qcCmpCookieAccessCall") !== -1 ? JSON.parse(event.data) : {};
 } else {
