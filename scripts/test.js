@@ -88,6 +88,8 @@ $( document ).ready(function() {
             }
             event.source.postMessage(msgIsString
                 ? JSON.stringify(returnObj) : returnObj, '*')
+
+            console.log(msgIsString)
         }
     }
 
