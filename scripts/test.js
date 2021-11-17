@@ -104,6 +104,8 @@ $( document ).ready(function() {
 
     $("#test").click(function() {
 
-        $("#test").html(getCookie('euconsent-v2'));
+
+        $("#test").html(registeredMessage);
+        // $("#test").html(getCookie('euconsent-v2'));
     });
 });
