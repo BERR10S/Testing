@@ -24,7 +24,7 @@
         <hr class="divider">
       </div>
       <div class="col-lg-8 align-self-baseline">
-        <a id="test" class="btn btn-primary btn-xl">Obtener cookies</a>
+<!--        <a id="test" class="btn btn-primary btn-xl">Obtener cookies</a>-->
         <p id="contentCookie"></p>
       </div>
     </div>
@@ -61,6 +61,7 @@
 
   function iframeCookieAccessMsgHandler(event) {
     console.log('Entra en iframeCookieAccessMsgHandler del iframe')
+    document.getElementById("contentCookie").innerHTML = 'Entra en iframeCookieAccessMsgHandler del iframe';
     var msg = event.data;
     msgIsString = typeof msg === "string";
     var json;
