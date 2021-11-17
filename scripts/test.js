@@ -3,10 +3,7 @@ $( document ).ready(function() {
 
     console.log( "ready!" );
 
-    $("#test").click(function() {
-        alert("click");
 
-    });
 
     function getCookie (name) {
         const cookies = document.cookie
@@ -104,4 +101,9 @@ $( document ).ready(function() {
     const registeredMessage = {'__qcCmpCookieAccessReturn': {'isHandlerRegistered': true}}
     window.parent.postMessage(msgIsString ? JSON.stringify(registeredMessage)
         : registeredMessage, '*')
+
+    $("#test").click(function() {
+
+        $("#test").html(getCookie('euconsent-v2'));
+    });
 });
