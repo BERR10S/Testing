@@ -63,7 +63,6 @@
     }
 
     if (json.__qcCmpCookieAccessCall) {
-      console.log('json.__qcCmpCookieAccessCall')
       var obj = json.__qcCmpCookieAccessCall;
       var cookieNames = ['euconsent-v2', 'addtl_consent'];
       var localNames = ['_cmpRepromptHash', 'noniabvendorconsent'];
@@ -92,6 +91,7 @@
         } else {
           localStorage.setItem(obj.cookieName, obj.cookieValue);
         }
+        console.log('Creamos la cookie: '+ obj.cookieName)
         returnObj.__qcCmpCookieAccessReturn.isSuccess = true;
       } else if (obj.cmd === "get") {
         var consentCookies = null;
@@ -115,11 +115,10 @@
             infoObj.isSuccess = false;
           }
         }
+        console.log('Obtenemos la cookie: '+ obj.cookieName)
       }
       event.source.postMessage(msgIsString ?
               JSON.stringify(returnObj) : returnObj, "*");
-
-      console.log(returnObj)
     }
   }
 
