@@ -120,7 +120,6 @@
         }
 
         if (infoObj.isSuccess && obj.cookieName !== '_cmpRepromptHash') {
-          console.log(infoObj.cookies[0])
           console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
           alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
         }
@@ -146,9 +145,9 @@
     if(window.self !== window.top) {
       // !== the operator checks if the operands are
       // have not the same value or not equal type
-      document.write("The page is in iFrame");
+      console.log("The page is in iFrame")
     } else {
-      document.write("The page is in iFrame");
+      console.log("The page is in iFrame");
     }
   }
   iniFrame();
