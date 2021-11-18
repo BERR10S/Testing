@@ -92,7 +92,6 @@
           localStorage.setItem(obj.cookieName, obj.cookieValue);
         }
         if (obj.cookieName !== '_cmpRepromptHash') {
-          console.log(obj)
           console.log('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
           alert('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
         }
@@ -122,6 +121,7 @@
 
         if (infoObj.isSuccess && obj.cookieName !== '_cmpRepromptHash') {
           console.log(obj)
+          console.log(infoObj)
           console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
           alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
         }
