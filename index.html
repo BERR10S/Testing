@@ -92,6 +92,7 @@
           localStorage.setItem(obj.cookieName, obj.cookieValue);
         }
         console.log('Creamos la cookie: '+ obj.cookieName)
+        alert('Creamos la cookie: '+ obj.cookieName)
         returnObj.__qcCmpCookieAccessReturn.isSuccess = true;
       } else if (obj.cmd === "get") {
         var consentCookies = null;
@@ -118,6 +119,7 @@
 
         if (infoObj.isSuccess) {
           console.log('Obtenemos la cookie: '+ obj.cookieName)
+          alert('Obtenemos la cookie: '+ obj.cookieName)
         }
       }
       event.source.postMessage(msgIsString ?
@@ -126,10 +128,8 @@
   }
 
   if (window.addEventListener) {
-    console.log('message')
     window.addEventListener('message', iframeCookieAccessMsgHandler, false);
   } else {
-    console.log('onmessage')
     window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
   }
 
