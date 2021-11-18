@@ -124,8 +124,10 @@
   }
 
   if (window.addEventListener) {
+    console.log('message')
     window.addEventListener('message', iframeCookieAccessMsgHandler, false);
   } else {
+    console.log('onmessage')
     window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
   }
 
