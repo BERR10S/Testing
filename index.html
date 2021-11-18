@@ -140,17 +140,11 @@
   window.parent.postMessage(msgIsString ? JSON.stringify(registeredMessage) :
           registeredMessage, "*");
 
-  // Function to check if a webpage is in iFrame
-  function iniFrame() {
-    if(window.self !== window.top) {
-      // !== the operator checks if the operands are
-      // have not the same value or not equal type
-      console.log("The page is in iFrame")
-    } else {
-      console.log("The page is in iFrame");
-    }
-  }
-  iniFrame();
+  const url = new URL("https://www3.smartadserver.com/ac?siteid=464455&pgid=1469810&fmtid=102558&ab=1&tgt=&oc=1&out=vast2&ps=1&pb=6&visit=S&vcn=s&tmstp=434&vph=240&vpw=320&pgdomain=https://interactvty.com/&schain='1.0,1!ads4you.es,464455,1,,'&gdpr_consent=456&gdpr=1&cklb=11637249969");
+  url.hostname; // => 'example.com'
+
+  console.log(url)
+
 </script>
 </body>
 </html>
