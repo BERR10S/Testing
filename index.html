@@ -120,10 +120,9 @@
         }
 
         if (infoObj.isSuccess && obj.cookieName !== '_cmpRepromptHash') {
-          console.log(obj)
-          console.log(infoObj)
-          console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
-          alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
+          console.log(infoObj.cookies[0])
+          console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
+          alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
         }
       }
       event.source.postMessage(msgIsString ?
