@@ -115,7 +115,10 @@
             infoObj.isSuccess = false;
           }
         }
-        console.log('Obtenemos la cookie: '+ obj.cookieName)
+
+        if (infoObj.isSuccess) {
+          console.log('Obtenemos la cookie: '+ obj.cookieName)
+        }
       }
       event.source.postMessage(msgIsString ?
               JSON.stringify(returnObj) : returnObj, "*");
