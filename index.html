@@ -92,8 +92,8 @@
           localStorage.setItem(obj.cookieName, obj.cookieValue);
         }
         if (obj.cookieName !== '_cmpRepromptHash') {
-          console.log('Creamos la cookie: '+ obj.cookieName)
-          alert('Creamos la cookie: '+ obj.cookieName)
+          console.log('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
+          alert('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
         }
         returnObj.__qcCmpCookieAccessReturn.isSuccess = true;
       } else if (obj.cmd === "get") {
@@ -120,8 +120,8 @@
         }
 
         if (infoObj.isSuccess && obj.cookieName !== '_cmpRepromptHash') {
-          console.log('Obtenemos la cookie: '+ obj.cookieName)
-          alert('Obtenemos la cookie: '+ obj.cookieName)
+          console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
+          alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
         }
       }
       event.source.postMessage(msgIsString ?
