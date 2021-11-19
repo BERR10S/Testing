@@ -152,7 +152,9 @@
     console.log(new_url);
 
     if (search_params.get('id') !== null) {
+        console.log('existe el id del video: ' +search_params.get('id'))
         if (window.addEventListener) {
+            console.log('window.addEventListener(\'message\', iframeCookieAccessMsgHandler, false)')
             window.addEventListener('message', iframeCookieAccessMsgHandler, false);
         } else {
             window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
