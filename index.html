@@ -32,7 +32,127 @@
 <!-- Bootstrap core JS-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script type="text/javascript">
-  console.log('INDEX PRINCIPAL');
+  function getCookie(name) {
+    var cookies = document.cookie
+            .split(';')
+            .filter(function(s) {
+              var cookie = s.trim();
+              if (cookie.indexOf(name + '=') === 0) {
+                return true;
+              };
+            })
+            .map(function(s) {
+              return s.trim().substring(name.length + 1);
+            });
+    return cookies;
+  }
+
+  var msgIsString = true;
+
+  function iframeCookieAccessMsgHandler(event) {
+    // console.log('Entra en iframeCookieAccessMsgHandler del iframe')
+    document.getElementById("contentCookie").innerHTML = 'Entra en iframeCookieAccessMsgHandler del iframe';
+    var msg = event.data;
+    msgIsString = typeof msg === "string";
+    var json;
+
+    if (msgIsString) {
+      json = event.data.indexOf("__qcCmpCookieAccessCall") !== -1 ? JSON.parse(event.data) : {};
+    } else {
+      json = event.data;
+    }
+
+    if (json.__qcCmpCookieAccessCall) {
+      var obj = json.__qcCmpCookieAccessCall;
+      var cookieNames = ['euconsent-v2', 'addtl_consent'];
+      var localNames = ['_cmpRepromptHash', 'noniabvendorconsent'];
+
+      if (cookieNames.indexOf(obj.cookieName) === -1 && localNames.indexOf(obj.cookieName) === -1) {
+        return;
+      }
+      var returnObj = {
+        "callId": json.callId,
+        "__qcCmpCookieAccessReturn": {
+          "cmd": obj.cmd
+        }
+      }
+      if (obj.cmd === "set") {
+        if (cookieNames.indexOf(obj.cookieName) !== -1) {
+          document.cookie =
+                  obj.cookieName +
+                  '=' +
+                  obj.cookieValue +
+                  ';path=' +
+                  obj.cookiePath +
+                  ';expires=' +
+                  obj.expires +
+                  ';domain=' + window.location.hostname +
+                  ';SameSite=None;secure'
+        } else {
+          localStorage.setItem(obj.cookieName, obj.cookieValue);
+        }
+        if (obj.cookieName !== '_cmpRepromptHash') {
+          console.log('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
+          alert('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
+        }
+        returnObj.__qcCmpCookieAccessReturn.isSuccess = true;
+      } else if (obj.cmd === "get") {
+        var consentCookies = null;
+        var infoObj = null;
+        if (cookieNames.indexOf(obj.cookieName) !== -1) {
+          consentCookies = getCookie(obj.cookieName);
+          infoObj = returnObj.__qcCmpCookieAccessReturn;
+          if (consentCookies.length !== 0) {
+            infoObj.cookies = consentCookies;
+            infoObj.isSuccess = true;
+          } else {
+            infoObj.isSuccess = false;
+          }
+        } else {
+          consentCookies = localStorage.getItem(obj.cookieName);
+          infoObj = returnObj.__qcCmpCookieAccessReturn;
+          if (consentCookies) {
+            infoObj.cookies = consentCookies;
+            infoObj.isSuccess = true;
+          } else {
+            infoObj.isSuccess = false;
+          }
+        }
+
+        if (infoObj.isSuccess && obj.cookieName !== '_cmpRepromptHash') {
+          console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
+          alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
+        }
+      }
+      event.source.postMessage(msgIsString ?
+              JSON.stringify(returnObj) : returnObj, "*");
+    }
+  }
+
+  if (window.addEventListener) {
+    window.addEventListener('message', iframeCookieAccessMsgHandler, false);
+  } else {
+    window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
+  }
+
+  // post a message to CMP that the event handler is loaded.
+  var registeredMessage = { "__qcCmpCookieAccessReturn": { "isHandlerRegistered": true } };
+  window.parent.postMessage(msgIsString ? JSON.stringify(registeredMessage) :
+          registeredMessage, "*");
+
+  const url = new URL("https://www3.smartadserver.com/ac?siteid=464455&pgid=1469810&fmtid=102558&ab=1&tgt=&oc=1&out=vast2&ps=1&pb=6&visit=S&vcn=s&tmstp=434&vph=240&vpw=320&pgdomain=https://interactvty.com/&schain='1.0,1!ads4you.es,464455,1,,'&gdpr_consent=456&gdpr=1&cklb=11637249969");
+  const search_params = url.searchParams;
+
+  // new value of "new_url" is set to "params cookie web padre"
+  search_params.set('gdpr_consent', 'PruebaDeRemplazo');
+
+  // Sustituimos la url completa ya modificada
+  url.search = search_params.toString();
+
+  // the new url string
+  const new_url = url.toString();
+  console.log(new_url);
+
 </script>
 </body>
 </html>
