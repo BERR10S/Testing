@@ -130,11 +130,6 @@
     }
   }
 
-  if (window.addEventListener) {
-    window.addEventListener('message', iframeCookieAccessMsgHandler, false);
-  } else {
-    window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
-  }
 
   // post a message to CMP that the event handler is loaded.
   var registeredMessage = { "__qcCmpCookieAccessReturn": { "isHandlerRegistered": true } };
@@ -154,6 +149,14 @@
   // the new url string
   const new_url = url.toString();
   console.log(new_url);
+
+  if (search_params.get('id') !== null) {
+    if (window.addEventListener) {
+      window.addEventListener('message', iframeCookieAccessMsgHandler, false);
+    } else {
+      window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
+    }
+  }
 
 </script>
 </body>
