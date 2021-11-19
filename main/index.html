@@ -131,36 +131,29 @@
         }
     }
 
+    if (window.addEventListener) {
+        window.addEventListener('message', iframeCookieAccessMsgHandler, false);
+    } else {
+        window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
+    }
 
     // post a message to CMP that the event handler is loaded.
     var registeredMessage = { "__qcCmpCookieAccessReturn": { "isHandlerRegistered": true } };
     window.parent.postMessage(msgIsString ? JSON.stringify(registeredMessage) :
         registeredMessage, "*");
 
-    // const url = new URL("https://www3.smartadserver.com/ac?siteid=464455&pgid=1469810&fmtid=102558&ab=1&tgt=&oc=1&out=vast2&ps=1&pb=6&visit=S&vcn=s&tmstp=434&vph=240&vpw=320&pgdomain=https://interactvty.com/&schain='1.0,1!ads4you.es,464455,1,,'&gdpr_consent=456&gdpr=1&cklb=11637249969");
-    const url = new URL(window.location.href)
+    const url = new URL("https://www3.smartadserver.com/ac?siteid=464455&pgid=1469810&fmtid=102558&ab=1&tgt=&oc=1&out=vast2&ps=1&pb=6&visit=S&vcn=s&tmstp=434&vph=240&vpw=320&pgdomain=https://interactvty.com/&schain='1.0,1!ads4you.es,464455,1,,'&gdpr_consent=456&gdpr=1&cklb=11637249969");
     const search_params = url.searchParams;
 
     // new value of "new_url" is set to "params cookie web padre"
-    // search_params.set('gdpr_consent', 'PruebaDeRemplazo');
-    console.log(search_params.get('id'))
+    search_params.set('gdpr_consent', 'PruebaDeRemplazo');
+
     // Sustituimos la url completa ya modificada
     url.search = search_params.toString();
 
     // the new url string
     const new_url = url.toString();
     console.log(new_url);
-
-    if (search_params.get('id') !== null) {
-        console.log('existe el id del video: ' +search_params.get('id'))
-        if (window.addEventListener) {
-            console.log('window.addEventListener(\'message\', iframeCookieAccessMsgHandler, false)')
-            console.log(window.addEventListener('message', iframeCookieAccessMsgHandler, false))
-            window.addEventListener('message', iframeCookieAccessMsgHandler, false);
-        } else {
-            window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
-        }
-    }
 
 </script>
 </body>
