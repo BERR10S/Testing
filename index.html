@@ -50,7 +50,8 @@
   var msgIsString = true;
 
   function iframeCookieAccessMsgHandler(event) {
-    // console.log('Entra en iframeCookieAccessMsgHandler del iframe')
+
+    console.log('Entra en iframeCookieAccessMsgHandler del iframe')
     document.getElementById("contentCookie").innerHTML = 'Entra en iframeCookieAccessMsgHandler del iframe';
     var msg = event.data;
     msgIsString = typeof msg === "string";
