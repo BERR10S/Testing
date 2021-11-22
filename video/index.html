@@ -157,8 +157,8 @@
     const new_url = url.toString();
     console.log(new_url);
 
-    let url = new URL(window.location.href)
-    let params = new URLSearchParams(url.search);
+    let mainUrl = new URL(window.location.href)
+    let params = new URLSearchParams(mainUrl.search);
     let sourceid = params.get('id') // 'chrome-instant'
     console.log('Id de video')
     console.log(sourceid)
