@@ -54,8 +54,8 @@
 
     function iframeCookieAccessMsgHandler(event) {
 
-        console.log('Entra en iframeCookieAccessMsgHandler del iframe')
-        document.getElementById("contentCookie").innerHTML = 'Entra en iframeCookieAccessMsgHandler del iframe';
+        // console.log('Entra en iframeCookieAccessMsgHandler del iframe')
+        // document.getElementById("contentCookie").innerHTML = 'Entra en iframeCookieAccessMsgHandler del iframe';
         var msg = event.data;
         msgIsString = typeof msg === "string";
         var json;
@@ -96,7 +96,7 @@
                     localStorage.setItem(obj.cookieName, obj.cookieValue);
                 }
                 if (obj.cookieName !== '_cmpRepromptHash') {
-                    console.log('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
+                    // console.log('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
                     // alert('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
                 }
                 returnObj.__qcCmpCookieAccessReturn.isSuccess = true;
@@ -124,7 +124,7 @@
                 }
 
                 if (infoObj.isSuccess && obj.cookieName !== '_cmpRepromptHash') {
-                    console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
+                    // console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
                     // alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
                 }
             }
@@ -163,9 +163,9 @@
     // console.log('iframe: ')
     // console.log(document.getElementsByName("iframe"))
     // console.log(document.getAttribute('data-id'))
-    console.log('windows desde iframe')
-    // console.log(window)
-    console.log(window.parent.frameElement.getAttribute('data-id'))
+    // console.log('windows desde iframe')
+    // // console.log(window)
+    // console.log(window.parent.frameElement.getAttribute('data-id'))
     // console.log('Id video desde data-id iframe: '+ window.frameElement.getAttribute('data-id'))
     // console.log('Id video desde data-id iframe: '+ window.frameElement.getAttribute('data-id'))
     // console.log('parent.document.cookie')
