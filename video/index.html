@@ -132,17 +132,24 @@
                 JSON.stringify(returnObj) : returnObj, "*");
         }
     }
+    let mainUrl = new URL(window.location.href)
+    let params = new URLSearchParams(mainUrl.search);
+    let sourceid = params.get('id') // 'chrome-instant'
+    console.log('Id de video')
+    console.log(sourceid)
+    if (sourceid) {
+        if (window.addEventListener) {
+            window.addEventListener('message', iframeCookieAccessMsgHandler, false);
+        } else {
+            window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
+        }
 
-    if (window.addEventListener) {
-        window.addEventListener('message', iframeCookieAccessMsgHandler, false);
-    } else {
-        window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
+        // post a message to CMP that the event handler is loaded.
+        var registeredMessage = { "__qcCmpCookieAccessReturn": { "isHandlerRegistered": true } };
+        window.parent.postMessage(msgIsString ? JSON.stringify(registeredMessage) :
+            registeredMessage, "*");
     }
 
-    // post a message to CMP that the event handler is loaded.
-    var registeredMessage = { "__qcCmpCookieAccessReturn": { "isHandlerRegistered": true } };
-    window.parent.postMessage(msgIsString ? JSON.stringify(registeredMessage) :
-        registeredMessage, "*");
 
     const url = new URL("https://www3.smartadserver.com/ac?siteid=464455&pgid=1469810&fmtid=102558&ab=1&tgt=&oc=1&out=vast2&ps=1&pb=6&visit=S&vcn=s&tmstp=434&vph=240&vpw=320&pgdomain=https://interactvty.com/&schain='1.0,1!ads4you.es,464455,1,,'&gdpr_consent=456&gdpr=1&cklb=11637249969");
     const search_params = url.searchParams;
@@ -157,11 +164,7 @@
     const new_url = url.toString();
     console.log(new_url);
 
-    let mainUrl = new URL(window.location.href)
-    let params = new URLSearchParams(mainUrl.search);
-    let sourceid = params.get('id') // 'chrome-instant'
-    console.log('Id de video')
-    console.log(sourceid)
+
     //
     // console.log('URL PADRE ' + document.referrer)
     // console.log('parent.document.cookie')
