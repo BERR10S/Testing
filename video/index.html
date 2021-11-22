@@ -97,7 +97,7 @@
                 }
                 if (obj.cookieName !== '_cmpRepromptHash') {
                     console.log('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
-                    alert('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
+                    // alert('Creamos la cookie: '+ obj.cookieName + '. Valor: ' + obj.cookieValue)
                 }
                 returnObj.__qcCmpCookieAccessReturn.isSuccess = true;
             } else if (obj.cmd === "get") {
@@ -125,7 +125,7 @@
 
                 if (infoObj.isSuccess && obj.cookieName !== '_cmpRepromptHash') {
                     console.log('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
-                    alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
+                    // alert('Obtenemos la cookie: '+ obj.cookieName + '. Valor: ' + infoObj.cookies[0])
                 }
             }
             event.source.postMessage(msgIsString ?
@@ -155,12 +155,13 @@
 
     // the new url string
     const new_url = url.toString();
-    console.log(new_url);
+    // console.log(new_url);
     //
     console.log('URL PADRE ' + document.referrer)
     // var iframe = document.getElementsByName("iframe");
     // var iframeTitle = iframe.contentDocument.title;
-    console.log('iframe: '+document.getElementsByName("iframe"))
+    console.log('iframe: ')
+    console.log(document.getElementsByName("iframe"))
     // console.log('Id video desde data-id iframe: '+ window.frameElement.getAttribute('data-id'))
     console.log('Id video desde data-id iframe: '+ window.frameElement.getAttribute('data-id'))
     // console.log('parent.document.cookie')
