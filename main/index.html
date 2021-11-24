@@ -147,7 +147,7 @@
     const url = new URL("https://www3.smartadserver.com/ac?siteid=464455&pgid=1469810&fmtid=102558&ab=1&tgt=&oc=1&out=vast2&ps=1&pb=6&visit=S&vcn=s&tmstp=434&vph=240&vpw=320&pgdomain=https://interactvty.com/&schain='1.0,1!ads4you.es,464455,1,,'&gdpr_consent=456&gdpr=1&cklb=11637249969");
     const search_params = url.searchParams;
 
-    console.log('tiene campo: ' + search_params.set('gdpr_consent'))
+    console.log('tiene campo: ' + search_params.get('gdpr_consent'))
     // new value of "new_url" is set to "params cookie web padre"
     search_params.set('gdpr_consent', 'PruebaDeRemplazo');
 
