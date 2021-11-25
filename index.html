@@ -57,13 +57,15 @@
       var msg = event.data;
       msgIsString = typeof msg === "string";
       var json;
-      document.getElementById("contentCookie").innerHTML = msg;
+
       if (msgIsString) {
         json = event.data.indexOf("__qcCmpCookieAccessCall") !== -1 ? JSON.parse(event.data) : {};
       } else {
         json = event.data;
       }
-
+      document.getElementById("contentCookie").innerHTML = json;
+      console.log('json.__qcCmpCookieAccessCall')
+      console.log(json.__qcCmpCookieAccessCall)
       if (json.__qcCmpCookieAccessCall) {
         var obj = json.__qcCmpCookieAccessCall;
         var cookieNames = ['euconsent-v2', 'addtl_consent'];
