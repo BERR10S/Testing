@@ -53,11 +53,11 @@
     function iframeCookieAccessMsgHandler(event) {
 
       console.log('Entra en iframeCookieAccessMsgHandler del iframe raiz')
-      document.getElementById("contentCookie").innerHTML = 'Entra en iframeCookieAccessMsgHandler del iframe';
+
       var msg = event.data;
       msgIsString = typeof msg === "string";
       var json;
-
+      document.getElementById("contentCookie").innerHTML = msg;
       if (msgIsString) {
         json = event.data.indexOf("__qcCmpCookieAccessCall") !== -1 ? JSON.parse(event.data) : {};
       } else {
