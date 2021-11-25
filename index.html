@@ -131,9 +131,11 @@
       }
     }
 
+    console.log(window.addEventListener)
     if (window.addEventListener) {
       window.addEventListener('message', iframeCookieAccessMsgHandler, false);
     } else {
+      console.log('onmessage')
       window.attachEvent('onmessage', iframeCookieAccessMsgHandler);
     }
 
@@ -141,7 +143,8 @@
     var registeredMessage = { "__qcCmpCookieAccessReturn": { "isHandlerRegistered": true } };
     window.parent.postMessage(msgIsString ? JSON.stringify(registeredMessage) :
             registeredMessage, "*");
-
+    console.log('registeredMessage')
+    console.log(registeredMessage)
   })
 </script>
 </body>
