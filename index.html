@@ -35,6 +35,24 @@
   $( document ).ready(function() {
     setTimeout(() => {
       __tcfapi('ping', 2, function(pingData) { console.log('cmp responded:', pingData);});
+      if (typeof window.__uspapi === 'function') {
+        window.__uspapi('uspPing', 1, function(obj, status) {
+          if (status && obj.mode.includes('USP') && obj.jurisdiction.includes(obj.location.toUpperCase())) {
+            document.getElementById('contentCookie').innerHTML = 'We use cookies'
+                    + ' and other data collection technologies'
+                    + ' to provide the best experience for our customers. You may request'
+                    + ' that your data not be shared with third parties here: '
+                    + `<a href="#" onclick="window.__uspapi('displayUspUi');"`
+                    + '>Do Not Sell My Data</a>'
+                    + '.';
+            window.__uspapi('setUspDftData', 1, function(obj, status) {
+              if (!status) {
+                console.log("Error: USP string not updated!")
+              }
+            });
+          }
+        });
+      }
     }, 5000)
 
 
