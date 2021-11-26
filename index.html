@@ -43,16 +43,12 @@
       console.log('Cookies aceptadas en padre')
       document.getElementById("contentCookie").innerHTML = search_params.get('gdpr_consent');
       // Creamos la cookie
-      let cookie = 'euconsent-v2=' +
+      document.cookie = 'euconsent-v2=' +
               search_params.get('gdpr_consent') +
               ';path=/' +
-              ';expires=' +
-              60*60*24*25 +
+              ';max-age=60*60*24*25' + // 25 días
               ';domain=' + window.location.hostname +
               ';SameSite=None;secure'
-
-      console.log(cookie)
-      document.cookie = cookie
     } else {
       console.log('Esperando aceptar las cookies')
       document.getElementById("contentCookie").innerHTML = 'Esperando aceptar las cookies';
