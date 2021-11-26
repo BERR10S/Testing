@@ -34,10 +34,10 @@
 <script>
   $( document ).ready(function() {
     setTimeout(() => {
-
+      __tcfapi('ping', 2, function(pingData) { console.log('cmp responded:', pingData);});
     }, 5000)
 
-    __tcfapi('ping', 2, function(pingData) { console.log('cmp responded:', pingData);});
+
   })
 </script>
 </body>
