@@ -36,6 +36,35 @@
     setTimeout(() => {
 
     }, 5000)
+    // let consent_string = "";
+    // window.__tcfapi('getTCData', 2, function(tcData, success) { console.log('cmp responded:', tcData, success);
+    //   consent_string=tcData.tcString;
+    //   console.log("CMP_CONSENT:"+consent_string);
+    // });
+    //
+    // console.log('Recorremos todos los iframes de la web que sean de nuestra plataforma')
+    // let iframes = document.getElementsByTagName('iframe')
+    // for (let i=0; i<iframes.length; i+=1) {
+    //   expresion = /^https:\/\/vozpopulitv.vozpopuli\.com\//;
+    //   expresion = /^https:\/\/berr10s.github\.io\//;
+    //   if (expresion.test(iframes[i].src)) {
+    //     // iframes[i].src = "https://berr10s.github.io/Testing?consent=JUAN"
+    //     const url = new URL(iframes[i].src)
+    //     // añadimos el gdpr_consent a la url del iframe para capturarlo luego
+    //     url.searchParams.append('gdpr_consent', consent_string);
+    //     // Sustituimos la url completa ya modificada
+    //     url.search = url.searchParams.toString();
+    //     // Se la asignamos al iframe
+    //     iframes[i].src = url.toString()
+    //   }
+    //
+    // }
+
+    const url = new URL(document.location.href);
+    const search_params = url.searchParams;
+
+    console.log('tiene campo: ' + search_params.get('gdpr_consent'))
+    // new value of "new_url" is set to "params cookie web padre"
     console.log('URL PROPIA ' + document.location.href)
     console.log('URL PADRE ' + document.referrer)
 
