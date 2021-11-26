@@ -32,29 +32,32 @@
 <!-- Bootstrap core JS-->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
-  $( document ).ready(function() {
-    console.log('URL IFRAME ' + document.location.href)
-    const url = new URL(document.location.href);
-    const search_params = url.searchParams;
-    // addtl_consent
-    // euconsent-v2
-    // console.log('tiene campo?')
-    // console.log(search_params.get('gdpr_consent'))
-    if (search_params.get('gdpr_consent') !== null && search_params.get('gdpr_consent') !== '') {
-      console.log('Cookies aceptadas en padre')
-      document.getElementById("contentCookie").innerHTML = search_params.get('gdpr_consent');
-      // Creamos la cookie
-      document.cookie = 'euconsent-v2=' +
-              search_params.get('gdpr_consent') +
-              ';path=/' +
-              ';max-age=2160000' + // 60*60*24*25 25 días
-              ';domain=' + window.location.hostname +
-              ';SameSite=None;secure'
-    } else {
-      console.log('Esperando aceptar las cookies')
-      document.getElementById("contentCookie").innerHTML = 'Esperando aceptar las cookies';
-    }
-  })
+  // Si esta cargada desde iframe
+  if (window.self !== window.top) {
+      console.log('URL IFRAME ' + document.location.href)
+      const url = new URL(document.location.href);
+      const search_params = url.searchParams;
+      // addtl_consent
+      // euconsent-v2
+      // console.log('tiene campo?')
+      // console.log(search_params.get('gdpr_consent'))
+      if (search_params.get('gdpr_consent') !== null && search_params.get('gdpr_consent') !== '') {
+        console.log('Cookies aceptadas en padre')
+        document.getElementById("contentCookie").innerHTML = search_params.get('gdpr_consent');
+        // Creamos la cookie
+        document.cookie = 'euconsent-v2=' +
+                search_params.get('gdpr_consent') +
+                ';path=/' +
+                ';max-age=2160000' + // 60*60*24*25 25 días
+                ';domain=' + window.location.hostname +
+                ';SameSite=None;secure'
+      } else {
+        console.log('Esperando aceptar las cookies')
+        document.getElementById("contentCookie").innerHTML = 'Esperando aceptar las cookies';
+      }
+  }else{
+    console.log('NO ES IFRAME ')
+  }
 </script>
 </body>
 </html>
