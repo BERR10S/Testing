@@ -39,7 +39,7 @@
     // addtl_consent
     // euconsent-v2
     console.log('tiene campo: ' + search_params.get('gdpr_consent'))
-    if (search_params.get('gdpr_consent') !== null) {
+    if (search_params.get('gdpr_consent') !== null && search_params.get('gdpr_consent') !== '') {
       console.log('Cookies aceptadas en padre')
       document.getElementById("contentCookie").innerHTML = search_params.get('gdpr_consent');
       // Creamos la cookie
