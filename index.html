@@ -34,8 +34,14 @@
 <script>
   $( document ).ready(function() {
     setTimeout(() => {
+      const url = new URL(document.location.href);
+      const search_params = url.searchParams;
 
-    }, 5000)
+      console.log('tiene campo: ' + search_params.get('gdpr_consent'))
+      // new value of "new_url" is set to "params cookie web padre"
+      console.log('URL PROPIA ' + document.location.href)
+      console.log('URL PADRE ' + document.referrer)
+    }, 3000)
     // let consent_string = "";
     // window.__tcfapi('getTCData', 2, function(tcData, success) { console.log('cmp responded:', tcData, success);
     //   consent_string=tcData.tcString;
@@ -60,13 +66,7 @@
     //
     // }
 
-    const url = new URL(document.location.href);
-    const search_params = url.searchParams;
 
-    console.log('tiene campo: ' + search_params.get('gdpr_consent'))
-    // new value of "new_url" is set to "params cookie web padre"
-    console.log('URL PROPIA ' + document.location.href)
-    console.log('URL PADRE ' + document.referrer)
 
   })
 </script>
