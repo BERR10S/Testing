@@ -33,10 +33,10 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script>
   // Si esta cargada desde iframe
-  // if (window.self !== window.top) {
+  if (window.self !== window.top) {
   // if (window.self) {
-      console.log('URL IFRAME ' + document.location.href)
-      const url = 'https://vozpopulitv.vozpopuli.com/#/content/content-view/35583?iframe';
+      console.log('URL IFRAME ' + window.location.href)
+      const url = window.location.href;
       // addtl_consent
       // euconsent-v2
       // console.log('tiene campo?')
@@ -48,32 +48,32 @@
       let paramValue = url.substring(url.indexOf("gdpr_consent"))
       // Obtenemos el valor
       gdpr_consent = paramValue.substring(paramValue.indexOf("=")+1)
+      if (gdpr_consent !== '') {
+        console.log('Cookies aceptadas en padre')
+        document.getElementById("contentCookie").innerHTML = gdpr_consent;
+        // Creamos la cookie
+        document.cookie = 'euconsent-v2=' +
+                gdpr_consent +
+                ';path=/' +
+                ';max-age=2160000' + // 60*60*24*25 25 días
+                ';domain=' + window.location.hostname +
+                ';SameSite=None;secure'
+      } else {
+        console.log('Esperando aceptar las cookies')
+        document.getElementById("contentCookie").innerHTML = 'Esperando aceptar las cookies';
+      }
     }
-    if (gdpr_consent !== '') {
-      console.log('Cookies aceptadas en padre')
-      document.getElementById("contentCookie").innerHTML = gdpr_consent;
-      // Creamos la cookie
-      document.cookie = 'euconsent-v2=' +
-              gdpr_consent +
-              ';path=/' +
-              ';max-age=2160000' + // 60*60*24*25 25 días
-              ';domain=' + window.location.hostname +
-              ';SameSite=None;secure'
-    } else {
-      console.log('Esperando aceptar las cookies')
-      document.getElementById("contentCookie").innerHTML = 'Esperando aceptar las cookies';
-    }
-  // }else{
-  //   console.log('NO ES IFRAME ')
-  //   const url = new URL('https://vozpopulitv.vozpopuli.com/#/content/content-view/35583?iframe');
-  //   const search_params = url.searchParams;
-  //
-  //
-  //
-  //   console.log(url)
-  //   console.log(search_params)
-  //
-  // }
+  }else{
+    console.log('NO ES IFRAME ')
+    const url = new URL('https://vozpopulitv.vozpopuli.com/#/content/content-view/35583?iframe');
+    const search_params = url.searchParams;
+
+
+
+    console.log(url)
+    console.log(search_params)
+
+  }
 </script>
 </body>
 </html>
