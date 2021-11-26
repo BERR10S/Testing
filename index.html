@@ -46,7 +46,7 @@
       document.cookie = 'euconsent-v2=' +
               search_params.get('gdpr_consent') +
               ';path=/' +
-              ';max-age=60*60*24*25' + // 25 días
+              ';max-age=2160000' + // 60*60*24*25 25 días
               ';domain=' + window.location.hostname +
               ';SameSite=None;secure'
     } else {
