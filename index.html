@@ -41,6 +41,7 @@
       // new value of "new_url" is set to "params cookie web padre"
       console.log('URL PROPIA ' + document.location.href)
       console.log('URL PADRE ' + document.referrer)
+      document.getElementById("contentCookie").innerHTML = search_params.get('gdpr_consent');
     }, 3000)
     // let consent_string = "";
     // window.__tcfapi('getTCData', 2, function(tcData, success) { console.log('cmp responded:', tcData, success);
