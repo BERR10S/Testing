@@ -48,6 +48,7 @@
               search_params.get('gdpr_consent') +
               ';path=/' +
               ';expires=' +
+              60*60*24*25 +
               ';domain=' + window.location.hostname +
               ';SameSite=None;secure'
     } else {
