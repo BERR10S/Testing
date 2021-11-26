@@ -36,11 +36,20 @@
     console.log('URL IFRAME ' + document.location.href)
     const url = new URL(document.location.href);
     const search_params = url.searchParams;
-
+    // addtl_consent
+    // euconsent-v2
     console.log('tiene campo: ' + search_params.get('gdpr_consent'))
     if (search_params.get('gdpr_consent') !== '') {
       console.log('Cookies aceptadas en padre')
       document.getElementById("contentCookie").innerHTML = search_params.get('gdpr_consent');
+      // Creamos la cookie
+      document.cookie =
+              'euconsent-v2=' +
+              search_params.get('gdpr_consent') +
+              ';path=/' +
+              ';expires=' +
+              ';domain=' + window.location.hostname +
+              ';SameSite=None;secure'
     } else {
       console.log('Esperando aceptar las cookies')
       document.getElementById("contentCookie").innerHTML = 'Esperando aceptar las cookies';
