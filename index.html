@@ -34,7 +34,7 @@
 <script>
   // Si esta cargada desde iframe
   // if (window.self !== window.top) {
-  if (window.self) {
+  // if (window.self) {
       console.log('URL IFRAME ' + document.location.href)
       const url = 'https://vozpopulitv.vozpopuli.com/#/content/content-view/35583?iframe&gdpr_consent=juanprueba';
       // addtl_consent
@@ -63,17 +63,17 @@
         document.getElementById("contentCookie").innerHTML = 'Esperando aceptar las cookies';
       }
     }
-  }else{
-    console.log('NO ES IFRAME ')
-    const url = new URL('https://vozpopulitv.vozpopuli.com/#/content/content-view/35583?iframe');
-    const search_params = url.searchParams;
-
-
-
-    console.log(url)
-    console.log(search_params)
-
-  }
+  // }else{
+  //   console.log('NO ES IFRAME ')
+  //   const url = new URL('https://vozpopulitv.vozpopuli.com/#/content/content-view/35583?iframe');
+  //   const search_params = url.searchParams;
+  //
+  //
+  //
+  //   console.log(url)
+  //   console.log(search_params)
+  //
+  // }
 </script>
 </body>
 </html>
