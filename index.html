@@ -34,14 +34,19 @@
 <script>
   // Si esta cargada desde iframe
   if (window.self !== window.top) {
+    $.ajax({
+      method: "GET",
+      url: "https://hidden-headland-14859.herokuapp.com/Api/cmpV2"
+    }).done(function(data) {
+      console.log(data); // imprimimos la respuesta
+    }).fail(function() {
+      console.log("Algo salió mal");
+    }).always(function() {
+      console.log("Siempre se ejecuta")
+    });
   // if (window.self) {
       console.log('URL IFRAME ' + window.location.href)
       const url = window.location.href;
-      // addtl_consent
-      // euconsent-v2
-      // console.log('tiene campo?')
-      // console.log(search_params.get('gdpr_consent'))
-
       // Comprobamos que exista el consentimiento en la URL
     let gdpr_consent = null
     if (url.indexOf("gdpr_consent") > -1 ) {
