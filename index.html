@@ -35,18 +35,18 @@
 <script>
   // Si esta cargada desde iframe
   if (window.self !== window.top) {
-    $(document).on('click', i, '#getcookie',  function(  ){
-      $.ajax({
-        method: "GET",
-        url: "https://hidden-headland-14859.herokuapp.com/Api/cmpV2"
-      }).done(function(data) {
-        console.log(data); // imprimimos la respuesta
-      }).fail(function() {
-        console.log("Algo salió mal");
-      }).always(function() {
-        console.log("Siempre se ejecuta")
+      $(document).on('click', '#getcookie',  function(){
+          $.ajax({
+              method: "GET",
+              url: "https://hidden-headland-14859.herokuapp.com/Api/cmpV2"
+          }).done(function(data) {
+              console.log(data); // imprimimos la respuesta
+          }).fail(function() {
+              console.log("Algo salió mal");
+          }).always(function() {
+              console.log("Siempre se ejecuta")
+          });
       });
-    });
   // if (window.self) {
       console.log('URL IFRAME ' + window.location.href)
       const url = window.location.href;
